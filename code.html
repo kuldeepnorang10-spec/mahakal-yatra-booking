@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Mahakal Yatra Prasad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Lexend:wght@300;400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --saffron: #FF7722;
+            --gold: #D4AF37;
+            --navy: #041329;
+        }
+
+        body {
+            background-color: #041329;
+            background-image: radial-gradient(circle at 50% 50%, #0a192f 0%, #041329 100%);
+            overflow-x: hidden;
+        }
+
+        /* Halftone Pattern Overlay */
+        .halftone-overlay {
+            background-image: radial-gradient(#ffffff0a 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .sticker-mascot {
+            border: 3px solid #FFFFFF;
+            box-shadow: 4px 4px 0px #000000;
+            transform: rotate(-2deg);
+        }
+
+        .comic-bubble {
+            filter: drop-shadow(4px 4px 0px #000000);
+        }
+
+        .temple-input {
+            background: rgba(10, 25, 47, 0.8);
+            border-bottom: 2px solid #D4AF37;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            transition: all 0.3s ease;
+        }
+
+        .temple-input:focus {
+            border-bottom-color: #FF7722;
+            box-shadow: 0 4px 12px -2px rgba(255, 119, 34, 0.2);
+            outline: none;
+        }
+
+        .saffron-glow {
+            box-shadow: 0 0 15px rgba(255, 119, 34, 0.4);
+        }
+
+        .saffron-glow:hover {
+            box-shadow: 0 0 25px rgba(255, 119, 34, 0.6);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Animation for the "Sacred!" popup */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#27354c",
+                        "primary-fixed": "#ffdbcb",
+                        "inverse-surface": "#d6e3ff",
+                        "outline": "#a78b7e",
+                        "on-secondary": "#3c2f00",
+                        "on-primary-container": "#5e2400",
+                        "on-tertiary-fixed": "#241a00",
+                        "primary-container": "#ff7722",
+                        "secondary-fixed-dim": "#e9c349",
+                        "inverse-primary": "#9f4200",
+                        "ink-black": "#000000",
+                        "on-background": "#d6e3ff",
+                        "surface-container-highest": "#27354c",
+                        "on-primary": "#552000",
+                        "on-error-container": "#ffdad6",
+                        "background": "#041329",
+                        "saffron-vibrant": "#FF7722",
+                        "primary-fixed-dim": "#ffb692",
+                        "surface-container-low": "#0d1c32",
+                        "on-tertiary-container": "#443400",
+                        "on-primary-fixed-variant": "#793100",
+                        "on-tertiary-fixed-variant": "#584400",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-bright": "#2c3951",
+                        "outline-variant": "#584237",
+                        "tertiary-fixed-dim": "#ebc245",
+                        "surface-container-high": "#1c2a41",
+                        "primary": "#ffb692",
+                        "tertiary-container": "#c09b1e",
+                        "error": "#ffb4ab",
+                        "secondary": "#e9c349",
+                        "surface": "#041329",
+                        "tertiary-fixed": "#ffe08c",
+                        "sticker-white": "#FFFFFF",
+                        "on-tertiary": "#3d2f00",
+                        "on-surface": "#d6e3ff",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#e0c0b1",
+                        "surface-container-lowest": "#010e24",
+                        "tertiary": "#ebc245",
+                        "surface-dim": "#041329",
+                        "secondary-container": "#af8d11",
+                        "deep-navy": "#0A192F",
+                        "antique-gold": "#D4AF37",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#342800",
+                        "surface-container": "#112036",
+                        "on-primary-fixed": "#341100",
+                        "surface-tint": "#ffb692",
+                        "secondary-fixed": "#ffe088",
+                        "inverse-on-surface": "#233148",
+                        "on-secondary-fixed": "#241a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Lexend"],
+                        "display-lg": ["Cinzel"],
+                        "headline-lg": ["Cinzel"],
+                        "headline-md": ["Cinzel"],
+                        "body-md": ["Lexend"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-on-surface">
+<div class="fixed inset-0 halftone-overlay z-0"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/80 backdrop-blur-lg border-b border-antique-gold/20 shadow-md">
+<div class="font-display-lg text-headline-md text-saffron-vibrant tracking-tight">MAHAKAL YATRA</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors" href="#">Darshan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors" href="#">Cabs</a>
+<a class="font-label-md text-label-md text-saffron-vibrant border-b-2 border-saffron-vibrant pb-1" href="#">Prasad</a>
+<button class="px-6 py-2 bg-saffron-vibrant text-on-primary font-label-md rounded-full hover:scale-105 active:scale-95 transition-all shadow-lg">Login</button>
+</div>
+</nav>
+<main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-12">
+<h1 class="font-display-lg text-display-lg text-saffron-vibrant mb-2">Sacred Checkout</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Complete your offering and receive divine blessings at your doorstep.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Sacred Selection & Delivery Details -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Section 1: Cart Items -->
+<section class="glass-card rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md text-antique-gold flex items-center gap-3">
+<span class="material-symbols-outlined">temple_hindu</span>
+                            Your Sacred Selection
+                        </h2>
+<span class="bg-saffron-vibrant text-ink-black font-label-sm px-3 py-1 rounded-full uppercase tracking-widest">2 Items</span>
+</div>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-antique-gold/20 flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up photograph of traditional Indian Mahakal Ladoo prasad, spherical and golden-brown, dusted with edible silver leaf and garnished with saffron strands. The lighting is warm and dramatic, highlighting the rich texture of the sweets against a dark, moody background. The overall aesthetic is spiritual and high-end, with a soft glow reflecting off the antique brass plate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ0zIU4CBaLKuromLxTy_WKw-ogUcrFBCkwKdXeoeEjOSQhSUo6CQaXxDVr4UoSUvb3VdTSsspHAe6H9GsT_8OlbKNyGnPu5OiaWQdU-xUkwJEh32srG4iO5xQtnjwRettnVZfFvCULO5KMT8okXDaPvTOuULjPn6bGhM_QOkFJnijvyp5JXt1kgxKnwZPR8FPsKdDoW0LFkMos-xm6vtwcY48lBS_dPDjhvQAzLmC1_awl0yghzNo2k0nh1r9Lmz7nOCoPPDrKYxW"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-body-lg text-on-surface">Mahakal Ladoo (Mahabhog)</h3>
+<span class="font-headline-md text-body-lg text-saffron-vibrant">₹2,450</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-4">Quantity: 5kg • Pure Desi Ghee</p>
+<div class="flex gap-4">
+<button class="text-label-sm text-antique-gold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                                    </button>
+<button class="text-label-sm text-error/80 hover:text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                    </button>
+</div>
+</div>
+</div>
+<div class="h-px bg-antique-gold/10"></div>
+<!-- Item 2 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-antique-gold/20 flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sacred container of Bhasma ash from the Mahakaleshwar temple, presented in a small handcrafted copper vessel. The fine grey ash is visible, and the scene is set against a backdrop of temple carvings and flickering oil lamps. The lighting is cinematic, casting long shadows and creating an atmosphere of deep reverence and ancient tradition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKqgXIOxPe8DIc4oh4t0HQaM79EkO1GmVKImjKNCwqLaiB_WAVl0gB9LiqitQBKHmgLqxHKWwbYnR9DcAgO29nLU0jg7UK8fkeyQTfDIoQ2WN4szXYsoUv2xyw7Se2qNDlRnbQx3eCQMzIrZ1VdmJ6KwJgkWL3YR9MztcnxQ6vomYBzHxFwMiPJkxsJERZ09ioU2-ccmmPLvKzpytKjjRMRqHKSnMT46kyH9Z2JsfbHCwc5x3toFz4kzu0g-1rybDYbwoouxo_Kub0"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-body-lg text-on-surface">Sacred Bhasma (Aarti Ash)</h3>
+<span class="font-headline-md text-body-lg text-saffron-vibrant">₹499</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-4">Quantity: 100g • Collected from Bhasma Aarti</p>
+<div class="flex gap-4">
+<button class="text-label-sm text-antique-gold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                                    </button>
+<button class="text-label-sm text-error/80 hover:text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Delivery Details Form -->
+<section class="glass-card rounded-xl p-8">
+<h2 class="font-headline-md text-headline-md text-antique-gold flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined">local_shipping</span>
+                        Delivery Details
+                    </h2>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Full Name</label>
+<input class="w-full temple-input px-1 py-3 text-on-surface placeholder:text-on-surface-variant/30" placeholder="Devotee's Name" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Phone Number</label>
+<input class="w-full temple-input px-1 py-3 text-on-surface placeholder:text-on-surface-variant/30" placeholder="+91 XXXXX XXXXX" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Complete Address</label>
+<input class="w-full temple-input px-1 py-3 text-on-surface placeholder:text-on-surface-variant/30" placeholder="House No, Building, Area, Pincode" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Gift Note / Special Prayer Request</label>
+<textarea class="w-full temple-input px-1 py-3 text-on-surface placeholder:text-on-surface-variant/30 resize-none" placeholder="Write your sankalp or prayer message for the Lord..." rows="4"></textarea>
+</div>
+</form>
+</section>
+<!-- Section 3: Delivery Options -->
+<section class="glass-card rounded-xl p-8">
+<h2 class="font-headline-md text-headline-md text-antique-gold flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined">speed</span>
+                        Delivery Options
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative group cursor-pointer">
+<input checked="" class="peer sr-only" name="delivery" type="radio"/>
+<div class="p-6 border-2 border-antique-gold/20 rounded-xl bg-surface-container-low peer-checked:border-saffron-vibrant peer-checked:bg-saffron-vibrant/5 transition-all">
+<div class="flex justify-between items-center mb-2">
+<span class="font-headline-md text-body-md text-on-surface">Standard</span>
+<span class="font-bold text-saffron-vibrant">FREE</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">3-5 Divine Solar Days</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="delivery" type="radio"/>
+<div class="p-6 border-2 border-antique-gold/20 rounded-xl bg-surface-container-low peer-checked:border-saffron-vibrant peer-checked:bg-saffron-vibrant/5 transition-all">
+<div class="flex justify-between items-center mb-2">
+<span class="font-headline-md text-body-md text-on-surface">Express</span>
+<span class="font-bold text-saffron-vibrant">₹250</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">Sacred Speed - Next Day</p>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5 relative">
+<div class="sticky top-28 space-y-8">
+<!-- Mascot & Comic Bubble -->
+<div class="flex items-end justify-center mb-12 relative h-48">
+<div class="absolute top-0 right-10 animate-float">
+<div class="comic-bubble bg-sticker-white text-ink-black font-extrabold text-2xl px-6 py-3 rounded-2xl relative">
+                                SACRED!
+                                <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[15px] border-l-transparent border-t-[15px] border-t-sticker-white border-r-[15px] border-r-transparent"></div>
+</div>
+</div>
+<div class="sticker-mascot w-40 h-40 bg-antique-gold rounded-full flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, modern digital illustration of a cheerful Hindu monk mascot, wearing traditional saffron robes and modern sneakers. The character has a playful, friendly expression with a traditional tilak on their forehead. The style is pop-art with thick comic-book outlines, flat colors, and a high-energy vibe, set against a vibrant saffron and deep navy background with halftone pattern accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsptN4yQ5wIhYwjiVrnCLdwR1bfaMQqr4GrqC1zM6dnnE-gSr6QBU3guNNQgV-ptZlEwCKvOMl1a38q3lBoRc4WdkeZy8pzVFfMC5lCrnl89TDpYGTAoE_CHwO-xyy2BGm1mz-Vz9vrkLIR5IlOEJ9-apCUnFBE0UnqPV0jEDHTRO_FLNHG-WJ_asAZkIcPhETRjQvro7X5AYohu52Wjo35e9RlxMGwt0kA7PQMqad5iK0UmChkiEXxOL3gXbxX9Sc_1h-sr5mLpBd"/>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="glass-card rounded-2xl p-6 overflow-hidden relative mb-8">
+<div class="absolute -top-12 -left-12 w-32 h-32 bg-antique-gold/10 blur-[60px] rounded-full"></div>
+<h2 class="font-headline-md text-body-lg text-antique-gold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">auto_videocam</span>
+        Sacred Blessing Preview
+    </h2>
+<div class="relative aspect-video rounded-lg overflow-hidden border border-antique-gold/20 group cursor-pointer">
+<img alt="Mahakal Temple Ceremony Preview" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKqgXIOxPe8DIc4oh4t0HQaM79EkO1GmVKImjKNCwqLaiB_WAVl0gB9LiqitQBKHmgLqxHKWwbYnR9DcAgO29nLU0jg7UK8fkeyQTfDIoQ2WN4szXYsoUv2xyw7Se2qNDlRnbQx3eCQMzIrZ1VdmJ6KwJgkWL3YR9MztcnxQ6vomYBzHxFwMiPJkxsJERZ09ioU2-ccmmPLvKzpytKjjRMRqHKSnMT46kyH9Z2JsfbHCwc5x3toFz4kzu0g-1rybDYbwoouxo_Kub0"/>
+<div class="absolute inset-0 bg-deep-navy/40 flex items-center justify-center">
+<div class="w-12 h-12 bg-saffron-vibrant rounded-full flex items-center justify-center saffron-glow transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-ink-black text-2xl fill-1">play_arrow</span>
+</div>
+</div>
+</div>
+<p class="mt-4 text-label-sm text-on-surface-variant italic">
+        Witness the sanctity of your offering being prepared.
+    </p>
+</div><div class="glass-card rounded-2xl p-8 overflow-hidden relative">
+<!-- Background Glow Effect -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-saffron-vibrant/20 blur-[100px] rounded-full"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Offering Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Sacred Selection Subtotal</span>
+<span>₹2,949</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Delivery Fee (Standard)</span>
+<span class="text-saffron-vibrant">₹0</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Spiritual Credits Applied</span>
+<span class="text-tertiary">- ₹150</span>
+</div>
+</div>
+<div class="h-px bg-antique-gold/20 mb-6"></div>
+<div class="flex justify-between items-center mb-10">
+<span class="font-headline-md text-headline-md text-on-surface">Final Offering</span>
+<span class="font-display-lg text-headline-lg text-saffron-vibrant">₹2,799</span>
+</div>
+<button class="w-full py-5 bg-saffron-vibrant text-ink-black font-display-lg text-headline-md rounded-xl saffron-glow transform transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4">
+                            ⚡ FINALIZE OFFERING
+                        </button>
+<p class="text-center mt-6 text-label-sm text-on-surface-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span>
+                            Encrypted Sacred Transaction
+                        </p>
+</div>
+<!-- Trust Signals -->
+<div class="flex justify-center gap-8 px-4 opacity-60">
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-antique-gold">verified</span>
+<p class="text-[10px] font-label-md uppercase tracking-tighter">Temple Certified</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-antique-gold">eco</span>
+<p class="text-[10px] font-label-md uppercase tracking-tighter">Pure Offerings</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-antique-gold">history_edu</span>
+<p class="text-[10px] font-label-md uppercase tracking-tighter">Vedic Blessing</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-lowest border-t border-antique-gold/10 relative z-10">
+<div class="font-display-lg text-headline-md text-antique-gold">MAHAKAL YATRA</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Contact Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">About Ujjain</a>
+</div>
+<div class="font-body-md text-label-sm text-on-surface-variant">
+            © 2024 Mahakal Yatra. Sacred Pilgrimages Redefined.
+        </div>
+</footer>
+<script>
+        // Micro-interactions: Glow follow effect for the summary card
+        const card = document.querySelector('.glass-card');
+        if(card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                // You could use these coordinates to move a subtle radial gradient highlight
+            });
+        }
+
+        // Form Validation visual feedback
+        const inputs = document.querySelectorAll('.temple-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if(input.value.trim() !== "") {
+                    input.style.borderBottomColor = '#D4AF37';
+                }
+            });
+        });
+    </script>
+</body></html>

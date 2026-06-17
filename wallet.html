@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mahakal Yatra | My Bookings & Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lexend:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@100..900&family=Inter:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#d6e3ff",
+                      "on-surface": "#d6e3ff",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-container-high": "#1c2a41",
+                      "tertiary-fixed": "#ffe08c",
+                      "surface-container-lowest": "#010e24",
+                      "on-tertiary-container": "#443400",
+                      "inverse-surface": "#d6e3ff",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#ffb692",
+                      "surface-container-highest": "#27354c",
+                      "on-error": "#690005",
+                      "surface-tint": "#ffb692",
+                      "on-secondary-container": "#342800",
+                      "on-surface-variant": "#e0c0b1",
+                      "outline-variant": "#584237",
+                      "tertiary-container": "#c09b1e",
+                      "surface": "#041329",
+                      "on-secondary-fixed": "#241a00",
+                      "background": "#041329",
+                      "on-primary-container": "#5e2400",
+                      "on-primary": "#552000",
+                      "ink-black": "#000000",
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary-container": "#ff7722",
+                      "secondary-container": "#af8d11",
+                      "primary": "#ffb692",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-tertiary": "#3d2f00",
+                      "inverse-on-surface": "#233148",
+                      "on-tertiary-fixed-variant": "#584400",
+                      "secondary": "#e9c349",
+                      "surface-container": "#112036",
+                      "secondary-fixed": "#ffe088",
+                      "surface-container-low": "#0d1c32",
+                      "surface-variant": "#27354c",
+                      "inverse-primary": "#9f4200",
+                      "saffron-vibrant": "#FF7722",
+                      "outline": "#a78b7e",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#793100",
+                      "tertiary-fixed-dim": "#ebc245",
+                      "on-primary-fixed": "#341100",
+                      "tertiary": "#ebc245",
+                      "sticker-white": "#FFFFFF",
+                      "error": "#ffb4ab",
+                      "antique-gold": "#D4AF37",
+                      "surface-dim": "#041329",
+                      "surface-bright": "#2c3951",
+                      "primary-fixed": "#ffdbcb",
+                      "on-secondary": "#3c2f00",
+                      "deep-navy": "#0A192F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Lexend"],
+                      "display-lg-mobile": ["Cinzel"],
+                      "headline-md": ["Cinzel"],
+                      "display-lg": ["Cinzel"],
+                      "headline-lg": ["Cinzel"],
+                      "body-lg": ["Lexend"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .halftone-bg {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .sticker-shadow {
+            box-shadow: 4px 4px 0px #000000;
+        }
+        .saffron-glow {
+            box-shadow: 0 0 20px rgba(255, 119, 34, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #FF7722;
+            border-bottom: 2px solid #FF7722;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md halftone-bg min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/80 backdrop-blur-lg border-b border-antique-gold/20 shadow-md">
+<div class="font-display-lg text-headline-md text-saffron-vibrant tracking-tight">Mahakal Yatra</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors hover:scale-105 duration-200" href="#">Darshan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors hover:scale-105 duration-200" href="#">Cabs</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors hover:scale-105 duration-200" href="#">Prasad</a>
+<button class="bg-primary-container text-on-primary-fixed px-6 py-2 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all saffron-glow">Login</button>
+</nav>
+</header>
+<main class="pt-32 pb-20 px-margin-desktop max-w-container-max mx-auto">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Pilgrim Dashboard</h1>
+<p class="text-on-surface-variant max-w-lg">Manage your sacred journey across Ujjain. View active bookings, track transactions, and manage your spiritual credits.</p>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex gap-1 bg-surface-container-low p-1 rounded-xl glass-card">
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-saffron-vibrant bg-surface-container-high transition-all">My Wallet</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Active Bookings</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">History</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Wallet & Transactions -->
+<section class="lg:col-span-4 space-y-gutter">
+<!-- Wallet Card -->
+<div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-saffron-vibrant/10 rounded-full blur-3xl transition-all group-hover:scale-150"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Current Balance</p>
+<h2 class="font-display-lg text-headline-lg text-saffron-vibrant">₹2,500.00</h2>
+</div>
+<div class="bg-saffron-vibrant/20 p-3 rounded-xl border border-saffron-vibrant/30">
+<span class="material-symbols-outlined text-saffron-vibrant" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+</div>
+<!-- Mascot Placement -->
+<div class="absolute -bottom-2 -right-2 transform rotate-6 scale-110 hidden md:block">
+<div class="relative">
+<div class="bg-saffron-vibrant text-ink-black font-label-md text-[10px] px-2 py-0.5 rounded-full absolute -top-4 -left-6 sticker-shadow border-2 border-white z-20">ZAP!</div>
+<img alt="Mascot" class="w-16 h-16 rounded-full border-[3px] border-sticker-white sticker-shadow bg-surface-bright" data-alt="A stylized digital spiritual avatar mascot with vibrant saffron robes and a modern pop-art aesthetic, featuring clean thick white borders and a hard black drop shadow. The character is set against a deep navy background with holographic accents, blending traditional religious iconography with a futuristic cyberpunk style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDf3aIZZC-Eq6MnHQfBqAJ4FeaowrhnsSIYVfgctr-03f57liJ_pmQLZxsPcoBuk7yr8N-8Zus94FfvpUbV38GWjtIpDZ8QmySOB_KtGWDARSZpDOW7RDd9FwmqdYmSmlvs1M1mP3l9nABBzoAqfLp1W_xQv7VFTHUviIcycI7GxuuTBZ0NAUeLGFjhJsDI2wYwksav4z_x6mF5Y6vtI_k6OmEqzeVrkBXTvCiT1C8DSbRwYzoSRxcZSDWMQ-shIBHa0L4YDRHTF-j"/>
+</div>
+</div>
+<button class="w-full bg-saffron-vibrant text-on-primary-fixed py-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all saffron-glow">
+<span class="material-symbols-outlined">add_circle</span>
+                        Add Funds
+                    </button>
+</div>
+<!-- Recent Transactions -->
+<div class="glass-card rounded-2xl p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-antique-gold">history</span>
+                        Recent Activity
+                    </h3>
+<div class="space-y-4">
+<!-- Transaction Item -->
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Darshan Booking</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">24 Oct, 2024</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">-₹1,100</p>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 uppercase tracking-tighter">Success</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors group border-t border-white/5 pt-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">add_shopping_cart</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Wallet Topup</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">22 Oct, 2024</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">+₹2,000</p>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 uppercase tracking-tighter">Success</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors group border-t border-white/5 pt-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">directions_car</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Premium Cab</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">21 Oct, 2024</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">-₹850</p>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 uppercase tracking-tighter">Pending</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 text-antique-gold font-label-md text-label-md hover:underline decoration-antique-gold/30">View All Transactions</button>
+</div>
+</section>
+<!-- Right Column: Bookings -->
+<section class="lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Yatras</h3>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-saffron-vibrant animate-pulse"></span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">2 active services</p>
+</div>
+</div>
+<!-- Booking Card 1: Darshan -->
+<div class="glass-card rounded-2xl overflow-hidden group hover:border-antique-gold/40 transition-all duration-300">
+<div class="grid md:grid-cols-12">
+<div class="md:col-span-4 h-48 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic, low-angle view of an ancient Indian temple at sunrise, with deep shadows and golden light reflecting off the intricate stone carvings. The atmosphere is mystical and serene, with wisps of incense smoke rising into a deep blue sky. The visual style is premium and realistic with high contrast and vibrant golden hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAytxb886IQcRrLdVt_SLnsvrdf_sWa7_1hjJGEtmNku8cCCTtJctQPvHKcgg6NLxALBdMNZjfGsXFTtFuPOxLRm9cwqHyvNv1gIH0OOfSqzg-2PHKw-7ALTcaViI3dqn51GrDKCUhhv6IlmZUlgj0PIY84tllGZfuCNOD6OHszWH93m2M7IiDLvMLZ9k6sEXT21f-3gqMl5aFkeVoWd4n9DI-ld4unGXQv6H6LrulvU70-IhGXTj7ke7Y3N9L70BQq9XWd707pYZA4"/>
+</div>
+<div class="md:col-span-8 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="bg-saffron-vibrant/20 text-saffron-vibrant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-saffron-vibrant/20">Darshan</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mt-2">Bhasma Aarti Access</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Token: <span class="text-antique-gold">#MK-8821</span></p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">Oct 28, 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">04:00 AM Slot</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-6 border-t border-white/5">
+<button class="flex-1 bg-white/10 hover:bg-white/20 text-on-surface py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                                    Receipt
+                                </button>
+<button class="flex-1 bg-primary-container text-on-primary-fixed py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2 saffron-glow">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+                                    View Digital Ticket
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Card 2: Cab -->
+<div class="glass-card rounded-2xl overflow-hidden group hover:border-antique-gold/40 transition-all duration-300">
+<div class="grid md:grid-cols-12">
+<div class="md:col-span-4 h-48 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A luxury dark black SUV parked on a modern city street at night, illuminated by warm orange streetlights that create sharp highlights on its metallic surface. The background features blurred city lights in deep navy and gold tones, reflecting a high-end, sophisticated travel experience. The composition is cinematic with a focus on polished textures and atmospheric lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr95zrcCQMYnOHXFoF2v3TcCEQH8S3aPV_ao_buErwPitOew7Y5HBTA1oDZzsjhlQnzhjpPWo-pMNYQ7BWvnHMzLkLMxNUWI-pSymq8cJyLtu6IXj2eodAp3OhmKdEjpbdPOs1mcebYU181d7TtsdxCyykZ1EPCnF3n38L08toCAHV2vNQ1gbAt_Nryeg8tj9bA-qQ9J2qtIwgBK2GvNyHcrgf9m6KZkXdjgPpaR06E1yDR6QfUdtLfJ31EEQvHBF8JTypC8utnDrP"/>
+</div>
+<div class="md:col-span-8 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-blue-500/20">Cab Service</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mt-2">Airport Pickup (Indore)</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Token: <span class="text-antique-gold">#CB-4490</span></p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">Oct 27, 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">02:30 PM Pickup</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-6 border-t border-white/5">
+<button class="flex-1 bg-white/10 hover:bg-white/20 text-on-surface py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">person</span>
+                                    Contact Driver
+                                </button>
+<button class="flex-1 bg-white/10 hover:bg-white/20 text-on-surface py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+                                    Track Live
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Card 3: Prasad -->
+<div class="glass-card rounded-2xl overflow-hidden group hover:border-antique-gold/40 transition-all duration-300">
+<div class="grid md:grid-cols-12">
+<div class="md:col-span-4 h-48 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close-up of traditional Indian sweets, beautifully arranged on a rustic gold plate. The scene is lit by warm, candle-like light that highlights the rich textures and vibrant saffron colors of the Prasad. The background is a soft, out-of-focus temple courtyard at twilight, creating a sense of sacredness and devotion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9zTpj8cNbf7oaeGzwPMQHEGuO5GUZl1ByDNhMTw4hakWLx3GRpacBFMEv-uvKQXIcLGfZ2oDvHvskM7VnJQ7nNzqi4WP1dUGxskfC9X7WW1im87SHlu_nMEKoJG2K9bFbF3cMpJblpl-BO6Lde51hAvT6nWg6nkVBOGtTglYCwORUmmwLmAOnHflRfhCGtWs3zRgdo7FeMpPEMYVO3wRU0XvXSb_2AQT3Pf14S3i78lILmeyK_1yN_RM7Hb5SEw4Gg5q-wTFxTk8R"/>
+</div>
+<div class="md:col-span-8 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="bg-antique-gold/20 text-antique-gold px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-antique-gold/20">Prasad</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mt-2">Mahakal Ladoo (5kg)</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Token: <span class="text-antique-gold">#PR-1202</span></p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">Oct 28, 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Post-Darshan Collection</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-6 border-t border-white/5">
+<button class="flex-1 bg-white/10 hover:bg-white/20 text-on-surface py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">info</span>
+                                    Service Info
+                                </button>
+<button class="flex-1 bg-white/10 hover:bg-white/20 text-on-surface py-3 rounded-xl font-label-md text-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                                    Receipt
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-lowest border-t border-antique-gold/10">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-display-lg text-headline-md text-antique-gold mb-2">Mahakal Yatra</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">© 2024 Mahakal Yatra. Sacred Pilgrimages Redefined.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Contact Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">About Ujjain</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the "CONFIRMED!" popup
+        document.addEventListener('DOMContentLoaded', () => {
+            const sticker = document.querySelector('.relative > div:first-child');
+            if (sticker) {
+                setInterval(() => {
+                    sticker.classList.toggle('animate-bounce');
+                }, 3000);
+            }
+        });
+    </script>
+</body></html>

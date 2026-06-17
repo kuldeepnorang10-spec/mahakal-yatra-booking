@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mahakal Yatra | Divine Travel, Redefined</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Lexend:wght@300;400;600&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "saffron-vibrant": "#FF7722",
+                    "background": "#041329",
+                    "primary-container": "#ff7722",
+                    "on-background": "#d6e3ff",
+                    "on-primary-container": "#5e2400",
+                    "surface": "#041329",
+                    "primary": "#ffb692",
+                    "on-primary": "#552000",
+                    "on-surface-variant": "#e0c0b1",
+                    "secondary-fixed": "#ffe088",
+                    "inverse-primary": "#9f4200",
+                    "on-secondary": "#3c2f00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#ebc245",
+                    "inverse-surface": "#d6e3ff",
+                    "surface-container-lowest": "#010e24",
+                    "surface-bright": "#2c3951",
+                    "outline-variant": "#584237",
+                    "outline": "#a78b7e",
+                    "on-primary-fixed-variant": "#793100",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-container-highest": "#27354c",
+                    "secondary-container": "#af8d11",
+                    "antique-gold": "#D4AF37",
+                    "primary-fixed": "#ffdbcb",
+                    "tertiary": "#ebc245",
+                    "sticker-white": "#FFFFFF",
+                    "on-tertiary-container": "#443400",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#27354c",
+                    "on-secondary-container": "#342800",
+                    "on-primary-fixed": "#341100",
+                    "secondary": "#e9c349",
+                    "surface-tint": "#ffb692",
+                    "surface-dim": "#041329",
+                    "surface-container-high": "#1c2a41",
+                    "surface-container-low": "#0d1c32",
+                    "on-surface": "#d6e3ff",
+                    "primary-fixed-dim": "#ffb692",
+                    "on-secondary-fixed": "#241a00",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffe08c",
+                    "surface-container": "#112036",
+                    "inverse-on-surface": "#233148",
+                    "ink-black": "#000000",
+                    "on-tertiary": "#3d2f00",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "deep-navy": "#0A192F",
+                    "tertiary-container": "#c09b1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Lexend"],
+                    "display-lg": ["Cinzel"],
+                    "body-md": ["Lexend"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Cinzel"],
+                    "headline-md": ["Cinzel"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        html {
+            scroll-behavior: auto; /* Handled by JS smooth scroll */
+        }
+        .halftone-bg {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 0.5px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            transition: 0.7s;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .glass-card:hover::after {
+            opacity: 1;
+            left: 100%;
+            top: 100%;
+        }
+        .sticker-effect {
+            border: 3px solid #FFFFFF;
+            box-shadow: 6px 6px 0px #000000;
+            transition: all 0.2s ease;
+        }
+        .sticker-effect:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+        .saffron-glow {
+            box-shadow: 0 0 20px rgba(255, 119, 34, 0.4);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 119, 34, 0.8), 2px 2px 0px #000000;
+        }
+        .comic-pop {
+            animation: bounce 0.5s infinite alternate;
+            opacity: 0;
+            transform: scale(0);
+        }
+        @keyframes bounce {
+            from { transform: scale(1) rotate(5deg); }
+            to { transform: scale(1.1) rotate(10deg); }
+        }
+        @keyframes slideInPop {
+            0% { transform: translate(-100%, 100%) scale(0.5); opacity: 0; }
+            70% { transform: translate(5%, -5%) scale(1.1); opacity: 1; }
+            100% { transform: translate(0, 0) scale(1); opacity: 1; }
+        }
+        .mascot-entrance {
+            animation: slideInPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .zap-visible {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #041329; }
+        ::-webkit-scrollbar-thumb { background: #FF7722; border-radius: 10px; }
+        
+        #shader-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        #hero-3d-container {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            z-index: 5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Shader Background Layer -->
+<div id="shader-bg"></div>
+<!-- Header Section -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/80 backdrop-blur-lg border-b border-antique-gold/20 shadow-md">
+<div class="flex items-center gap-4">
+<!-- Mascot Sticker -->
+<div class="relative mascot-entrance">
+<div class="w-12 h-12 rounded-full overflow-hidden sticker-effect bg-antique-gold rotate-[-3deg]">
+<img alt="Mascot Guide" class="w-full h-full object-cover" data-alt="A stylized portrait of a friendly digital avatar with expressive features, presented as a sticker with a thick white border. The character has a welcoming smile, wearing modern spiritual attire. The background is a vibrant solid color, and the overall aesthetic is clean, energetic pop-art with cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPhmqqjg-84BxbesrY0CEG6i80gxmUvEw4RdKw3NKIMaRu6ZQQe314ubsg_UBr_wY1ieV8-unUtmqXem5uBOQRIqWevXn9U1mveke4RJ8Ukr_5Rnn0NInt9OqRX0LVq4bBlk-sj3HzUC1qLTAdJwkLc5MWagq_Dwga6YDAr8Lgg4ugruY3VA8qrn4ygMUYwxUBH2bmOl65Pj0aCyn5Qvi4t3W8oIVtuIPFyPb_2axnCrSeRRakrqfmjMm6vGIH55HtD0Vdtd7upm0w"/>
+</div>
+<!-- Comic Pop -->
+<div class="absolute -top-4 -right-8 bg-saffron-vibrant text-ink-black font-bold px-2 py-1 text-xs rounded-sm sticker-effect comic-pop z-10" id="zap-bubble">
+                    ZAP!
+                </div>
+</div>
+<span class="font-display-lg text-headline-md text-saffron-vibrant tracking-tighter">Mahakal Yatra</span>
+</div>
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-label-md text-label-md text-saffron-vibrant border-b-2 border-saffron-vibrant pb-1" href="#">Darshan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors" href="#">Cabs</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-saffron-vibrant transition-colors" href="#">Prasad</a>
+</nav>
+<button class="bg-saffron-vibrant text-ink-black px-6 py-2 rounded-full font-label-md text-label-md font-bold sticker-effect hover:scale-105 active:scale-95 transition-all">
+            Login
+        </button>
+</header>
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<!-- Cinematic Background with Parallax Hook -->
+<div class="absolute inset-0 z-0 parallax-bg overflow-hidden">
+<img class="w-full h-full object-cover brightness-50 transform scale-110" data-alt="A cinematic, low-angle wide shot of the majestic Mahakaleshwar Temple in Ujjain at twilight. The sky is a deep indigo with streaks of orange and gold. The ancient stone architecture is illuminated by warm, ethereal temple lights, casting dramatic shadows. The atmosphere is thick with incense smoke, creating a hazy, sacred aura." id="hero-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk7Y9VScZ9ZRHbd3RvmARWbfnsTxX4tJ2EwPvM4GJgtw7hoijFsEsEDIfZFJhL8j7Z2DXu2tFbf68fYV0-3k-VQ1fvOie9sO7Z24lehYtvnSNXEPsXdDjS58v0aAyIbojZdOb1ARw1fLwSsiy8fvRYUiRkjuSABrP1CddMZZluqyms3b7AceiuPoH47qxeRpCFifZjiLhd4eoDIo_Q3HTvDiEMOQRIAU5Via8qe0q38UISMgdRUZg2KPW7Wsv608tGFRWftzlkmwFW"/>
+</div>
+<!-- 3D Scene Hook -->
+<div class="hidden md:block translate-x-[30%] -translate-y-[10%]" id="hero-3d-container"></div>
+<div class="relative z-10 text-center px-margin-mobile">
+<h1 class="font-display-lg text-display-lg text-sticker-white text-glow mb-12" id="hero-headline">
+                Ujjain Awaits.<br/>
+<span class="text-antique-gold">Divine Travel, Redefined.</span>
+</h1>
+<!-- Booking Widget -->
+<div class="glass-card max-w-4xl mx-auto rounded-xl p-2 md:p-1 saffron-glow">
+<!-- Tabs -->
+<div class="flex justify-center border-b border-antique-gold/20 mb-6">
+<button class="tab-btn active px-8 py-4 font-label-md text-label-md text-saffron-vibrant border-b-2 border-saffron-vibrant" onclick="switchTab('darshan')">DARSHAN</button>
+<button class="tab-btn px-8 py-4 font-label-md text-label-md text-on-surface-variant" onclick="switchTab('cabs')">CABS</button>
+<button class="tab-btn px-8 py-4 font-label-md text-label-md text-on-surface-variant" onclick="switchTab('prasad')">PRASAD</button>
+</div>
+<!-- Form Content -->
+<div class="p-6">
+<div class="grid md:grid-cols-3 gap-gutter items-end" id="darshan-form">
+<div class="text-left">
+<label class="block font-label-sm text-label-sm text-antique-gold mb-2">Temple</label>
+<select class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+<option>Mahakaleshwar Jyotirlinga</option>
+<option>Harsiddhi Mata Temple</option>
+<option>Kal Bhairav Temple</option>
+</select>
+</div>
+<div class="text-left">
+<label class="block font-label-sm text-label-sm text-antique-gold mb-2">Date</label>
+<input class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3" type="date"/>
+</div>
+<div class="text-left">
+<label class="block font-label-sm text-label-sm text-antique-gold mb-2">Pilgrims</label>
+<input class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3" placeholder="Number of Pilgrims" type="number"/>
+</div>
+</div>
+<button class="mt-12 w-full md:w-auto bg-saffron-vibrant text-ink-black px-12 py-4 rounded-full font-label-md text-label-md font-extrabold sticker-effect saffron-glow hover:scale-105 transition-all">
+                        ⚡ SECURE MY YATRA
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Sacred Sites Grid -->
+<section class="py-24 px-margin-desktop halftone-bg">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-display-lg text-headline-lg text-antique-gold mb-12 text-center">Sacred Destinations</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Temple Card 1 -->
+<div class="group glass-card rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+<div class="h-64 relative">
+<img class="w-full h-full object-cover" data-alt="A stunning, high-contrast photograph of an ancient Indian temple complex. The sun creates long, dramatic shadows against the intricately carved stone walls. The color palette is dominated by warm oranges and cool indigos. In the corner, a subtle blue halftone dot pattern texture overlay gives it a modern pop-art editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_MXPTdbfxVKGTjpJj0Z0AuVKphvYGIknO6Um2VduJVIjYGHygCYxw6_1GLQd3UDD2_8bE9AL4ccwLMWytpPA5WrdwBbfRAacpgKmBBAjQb-vsdq5EFHzhLH0jSpHEWX5t48f5vkqkgE5Mt2E1KC0L00AGKLwUT62T85ElBin9xGbBtYyZp2yNFwNF1tIETZYYLTi-O8kC66cAOubhG_eFJ8uqp03lK7kpI7XR5TmIw5Ryq1cLYavjxoAVtdGYKPs2ZJFXbHHjeU_y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-saffron-vibrant mb-2">Mahakaleshwar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The soul of Ujjain. Experience the divine Bhasma Aarti at the break of dawn.</p>
+</div>
+</div>
+<!-- Temple Card 2 -->
+<div class="group glass-card rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+<div class="h-64 relative">
+<img class="w-full h-full object-cover" data-alt="The Harsiddhi Mata Temple in Ujjain, featuring its iconic tall light pillars during a festival. Thousands of oil lamps glow against the dark night sky, creating a shimmering golden aura. The image is captured with a shallow depth of field, making the glowing lights appear like soft, sacred bokeh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Zoq57SK2lEKQrpjsSgxzvJwQp7xYaC_lYioP5R87xocR5sO-sJC9ENA5Rm_AWz_Oqce2ogzWUfW706XHHS6oA6w8zyAGwuY0JEtuT8K22XaPJ7zsEb8FtIGNSSzxwczusWk4LkRxvhg_1Tgxiapiut0bfkZ2WYIQAhQ2Ax5_psOLXFyKook-L89CvDmkm8Xj_xQeyDexndwTQBy4FaPrNwOUKDbUBd2G_-xZYtSB2lIPoN7v4vwGw5WD_94EKz4Z9j1E53dy-BIU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-saffron-vibrant mb-2">Harsiddhi Mata</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">One of the 51 Shakti Peethas, famous for its magnificent Deepsthambas.</p>
+</div>
+</div>
+<!-- Temple Card 3 -->
+<div class="group glass-card rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+<div class="h-64 relative">
+<img class="w-full h-full object-cover" data-alt="A close-up architectural shot of the Kal Bhairav temple entrance. The stone carvings are vivid and detailed. The lighting is cinematic, highlighting the orange and gold hues of the temple decorations. A modern graphic overlay of saffron-colored lines subtly follows the temple's geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtRu84Hsc87wgZU2CTukETYtth7mwdNlz58V4lyNc4H1SiTHLmZnCjKh7MxYGu6Q_lNmTCNQ4x7W3TNxN2a3JEtpvpgTwuqDH0FQ5btwMBe_As54C_G23uHw_YuiMvn_zzdJrli--eLSSqmmqnPhtFRBWvlZN9G0TlgUgiA7hE3A3z1ce1-l6RsNQ2idHC9rb7E10GR6Q98inpqaLVCqWaAcBeEa4Kp2afwXUN8oxJLMzL0niR5YyUl0nwEMddjbEdDKlBL47_Vo8H"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-saffron-vibrant mb-2">Kal Bhairav</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A unique guardian temple where liquor is offered as prasad to the deity.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- E-Prashad Store -->
+<section class="py-24 bg-surface-container-low px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-display-lg text-headline-lg text-saffron-vibrant">Sacred E-Prasad</h2>
+<p class="font-body-md text-body-md text-antique-gold mt-2">Delivering Ujjain's blessings to your doorstep.</p>
+</div>
+<button class="text-antique-gold flex items-center gap-2 hover:underline">
+                    View All Products <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product 1 -->
+<div class="glass-card p-4 rounded-xl flex flex-col group">
+<div class="aspect-square rounded-lg overflow-hidden bg-surface mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="An artistic studio shot of traditional Mahakal Ladoo prasad. The golden-brown sweets are arranged on a traditional copper plate, garnished with silver leaf and saffron. The lighting is warm and inviting, with a deep navy background that makes the golden colors of the prasad pop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmTPjwkrat_9knK3B4yRnNEiFXuCimdpz0gAy6mFCPbKJuUwYta40uQS6tQ-D9MKA_zPcPpIs0t9QRCwQFH1s6nQbQZ9YHs6k0x5s0kXuKkN-HNCbTBKIdObiMaESnfE6CIYcPXH-pXuS-OgHbTn_UdKK540FG4x2ucWOgTaUqy9m_keVjzSNLsAOPzwIL_yaD5eLQw9x1MrLzFnD9fCUMztCnWxx7xNJAkLtlLkNm6Pv8Ae-8Av1ThoRBXwJLdgv3BSUwppnknhwf"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-background mb-1">Mahakal Ladoo</h4>
+<span class="text-antique-gold font-label-md">₹501 / 500g</span>
+<button class="mt-4 w-full border border-antique-gold text-antique-gold py-2 rounded-full hover:bg-antique-gold hover:text-ink-black transition-all font-label-md">
+                        Add to Cart
+                    </button>
+</div>
+<!-- Product 2 -->
+<div class="glass-card p-4 rounded-xl flex flex-col group">
+<div class="aspect-square rounded-lg overflow-hidden bg-surface mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A sacred vial containing Bhasma (holy ash) from the Mahakaleshwar temple. The glass vial is intricately decorated with gold thread. It sits on a dark velvet surface with scattered jasmine flowers. High-end product photography with a spiritual, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsLhne7Aho4SikxT-BV56DF_htH407u_AXa3Sr_ApSF5XNTPJaalsdggTU5WbDsgx-K6JJqCgI53dioCYWzEIpyz-COMmz4_WZO3PGzNctQTViVZ52Kp47CR8fcEvt9Bs8ygeqt7dK0neL2dEpPnxZnKoRxIPapCLPXiiIqAWSi7F0WGJav27I_ReI96TYfOKcC-cXZ8HoKnWnEVjQaZoaC9PAKcDBdJP4u3vN9Pyfce_v6jzsBa-skvm5losPjOWamrK7pVOD9amm"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-background mb-1">Sacred Bhasma</h4>
+<span class="text-antique-gold font-label-md">₹251 / Vial</span>
+<button class="mt-4 w-full border border-antique-gold text-antique-gold py-2 rounded-full hover:bg-antique-gold hover:text-ink-black transition-all font-label-md">
+                        Add to Cart
+                    </button>
+</div>
+<!-- Product 3 -->
+<div class="glass-card p-4 rounded-xl flex flex-col group">
+<div class="aspect-square rounded-lg overflow-hidden bg-surface mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Traditional silver coins embossed with the Mahakal image, presented in a velvet-lined jewelry box. The coins gleam under focused spotlights. The composition is elegant and royal, highlighting the sacred and precious nature of the item." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB861bMecbhcGfhEuFdOntahPb5f-YfpCFe1KDJV5liSFWNSqU3GTid_-RymjkmxmS8MbSL30ZtEqZUf5kGo-5sRCE-xIsJiiQul8Zeu7Aqk13js99Ob4ivSLjNEtb-jrkucOwofSwNTl4jKovhFjAV33kbZCAEXZl1kfLOAq0h-xXZFRpgHhEwH4P1a85gVBtCO0F8hhO1C14Kqg9Q3YXUVZ6ES5O92gAr3Epv5aQ9GmPMBVXG8rsM_ciqVlUdn6qUXICEn3xlbgmw"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-background mb-1">Silver Coins</h4>
+<span class="text-antique-gold font-label-md">₹2,100 / 10g</span>
+<button class="mt-4 w-full border border-antique-gold text-antique-gold py-2 rounded-full hover:bg-antique-gold hover:text-ink-black transition-all font-label-md">
+                        Add to Cart
+                    </button>
+</div>
+<!-- Product 4 -->
+<div class="glass-card p-4 rounded-xl flex flex-col group">
+<div class="aspect-square rounded-lg overflow-hidden bg-surface mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A beautiful spiritual kit including a rudraksha mala, sandalwood paste, and a small copper diya. The items are arranged on a piece of rustic silk cloth. The lighting is soft and meditative, emphasizing the natural textures of the spiritual artifacts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUzGfrd9dWchA1LZT2fBRAW62R3IYvixhQPNP1LfxwtS3Y531JYFLzBqS9uCPyRQqr-59sXbQdpPChwvyPRloPmCOWpbOS6TLLm1e1e7HILdAI23DcxnnJZw0v6FfNGrel6kMQf6ktEYpTx5rkpeDXVPUOoSX3eM7farirU1alyyPvTTAU7Ind5gK1bJcS4b8rOn_yqU9KZc-iApChiQApwRUHAdK4tO6bslctys5le_4bkNUxmMMkhzujdZ2LFdrPmYTZ_oTMhkQU"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-background mb-1">Puja Samagri Kit</h4>
+<span class="text-antique-gold font-label-md">₹1,250 / Set</span>
+<button class="mt-4 w-full border border-antique-gold text-antique-gold py-2 rounded-full hover:bg-antique-gold hover:text-ink-black transition-all font-label-md">
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Pooja Section -->
+<section class="py-24 px-margin-desktop relative overflow-hidden">
+<div class="max-w-container-max mx-auto relative z-10">
+<h2 class="font-display-lg text-headline-lg text-sticker-white mb-12">Special Pooja Ceremonies</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Pooja Card 1 -->
+<div class="relative h-[400px] rounded-2xl overflow-hidden group sticker-effect">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A powerful, spiritual representation of a Vedic pooja ceremony for Kaalsarp Dosh. Bright ritual fires burn in a traditional havan kund, casting flickering orange light on the priests dressed in saffron robes. The air is filled with spiritual energy and smoke, set against the backdrop of an ancient temple hall at night." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMhBjsK7MWly5F9ueCfZSq-yLH3sPtrMgjpb0LXZe6vLCjBROPUR7oNghGiLUs4vgNZd19w8AhVbQFDp1-7ckqCscS9y4UOWmrXUtY9aKZnex8OWJvSQ864Ij0RqJDCInduCeIKajZrxyQfEsdWUEW1M3YKSQZk6MdFP-95jywymjJKfpGkQ9tevoQFMnH7tde8KDx7uV_pCjw9u4hagmAivn6x3_rAEAMMHHaNVI3oAhyhI90WmQlQjeHFlCYotd5oAuzRWhQ9EMx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-ink-black via-ink-black/40 to-transparent p-12 flex flex-col justify-end">
+<span class="inline-block bg-saffron-vibrant text-ink-black px-4 py-1 rounded-full text-xs font-bold w-fit mb-4 sticker-effect">MOST SACRED</span>
+<h3 class="font-display-lg text-headline-lg text-sticker-white mb-4">Kaalsarp Dosh Nivaran</h3>
+<p class="text-on-surface-variant font-body-md mb-6 max-w-md">Restore balance to your destiny with Ujjain's most sought-after Vedic correction ceremony.</p>
+<button class="bg-antique-gold text-ink-black px-8 py-3 rounded-full font-bold w-fit hover:bg-white transition-colors">Book Ceremony</button>
+</div>
+</div>
+<!-- Pooja Card 2 -->
+<div class="relative h-[400px] rounded-2xl overflow-hidden group sticker-effect rotate-[1deg]">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="An intense, evocative image depicting a Maha Kaali Pooja. Dark, cinematic lighting is punctuated by the vivid red of hibiscus flowers and the golden glow of oil lamps. The atmosphere is mystical and powerful, with shadows dancing on temple walls, capturing the raw energy of the divine feminine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOn8XBfKC6n-Y4gTfHEKToPfsPsgfoaovOabcf40nUnZo1ozINFKzDZPocj3F9apVnJ0kwnUV3KV6x3g6Y_kV9zI-jUfF2FYJqNmfBMYGB_k-25GVGT3fbzCS7tfh3txCt5-0Nfu9DXdIciTBrQik0gsg4ZCAem_kBB54SHevdnzd2LD4DbdtsUavEZ6e9UUkW00xruomjN2p_NLAJaKMirbOqIcXDsB8_O8Lrt-19sr587QgehGy0DoKICbO50qVSsetc-zLk8TnZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-ink-black via-ink-black/40 to-transparent p-12 flex flex-col justify-end">
+<span class="inline-block bg-tertiary text-ink-black px-4 py-1 rounded-full text-xs font-bold w-fit mb-4 sticker-effect">POWERFUL RITUAL</span>
+<h3 class="font-display-lg text-headline-lg text-sticker-white mb-4">Maha Kaali Abhishekam</h3>
+<p class="text-on-surface-variant font-body-md mb-6 max-w-md">Invoke divine protection and strength through this immersive Shakti worship experience.</p>
+<button class="bg-antique-gold text-ink-black px-8 py-3 rounded-full font-bold w-fit hover:bg-white transition-colors">Book Ceremony</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Section -->
+<footer class="w-full bg-surface-container-lowest border-t border-antique-gold/10 py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-display-lg text-headline-md text-antique-gold">Mahakal Yatra</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant max-w-xs text-center md:text-left">
+                © 2024 Mahakal Yatra. Sacred Pilgrimages Redefined.
+            </p>
+</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">Contact Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-antique-gold transition-colors" href="#">About Ujjain</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full border border-antique-gold/20 flex items-center justify-center hover:bg-saffron-vibrant transition-colors group cursor-pointer">
+<span class="material-symbols-outlined text-antique-gold group-hover:text-ink-black">share</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-antique-gold/20 flex items-center justify-center hover:bg-saffron-vibrant transition-colors group cursor-pointer">
+<span class="material-symbols-outlined text-antique-gold group-hover:text-ink-black">notifications</span>
+</div>
+</div>
+</footer>
+<script>
+    // Smooth Scroll Implementation
+    const smoothScroll = () => {
+        let current = 0;
+        let target = 0;
+        let ease = 0.075;
+
+        const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+
+        const update = () => {
+            target = window.scrollY;
+            current = lerp(current, target, ease);
+            
+            // Parallax Effects
+            const heroHeadline = document.getElementById('hero-headline');
+            const heroImg = document.getElementById('hero-img');
+            
+            if (heroHeadline) {
+                heroHeadline.style.transform = `translateY(${current * 0.3}px)`;
+            }
+            if (heroImg) {
+                const scale = 1.1 + (current * 0.0002);
+                heroImg.style.transform = `scale(${scale})`;
+            }
+
+            requestAnimationFrame(update);
+        };
+        update();
+    };
+    smoothScroll();
+
+    // Mascot Entrance Logic
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const zap = document.getElementById('zap-bubble');
+            if (zap) zap.classList.add('zap-visible');
+        }, 1000);
+    });
+
+    // 1. WebGL Shader Background (ANIMATION_50 as atmospheric layer)
+    const initShaderBackground = () => {
+        const container = document.getElementById('shader-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const uniforms = {
+            u_time: { value: 1.0 },
+            u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+            u_mouse: { value: new THREE.Vector2() }
+        };
+
+        const material = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: `
+                varying vec2 v_texCoord;
+                void main() {
+                    v_texCoord = uv;
+                    gl_Position = vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                precision highp float;
+                uniform float u_time;
+                uniform vec2 u_resolution;
+                uniform vec2 u_mouse;
+                varying vec2 v_texCoord;
+
+                void main() {
+                    vec2 uv = v_texCoord;
+                    vec2 p = (uv - 0.5) * 2.0;
+                    p.x *= u_resolution.x / u_resolution.y;
+
+                    float dist = length(p);
+                    float glow = 0.05 / (dist + 0.1);
+                    
+                    vec3 color1 = vec3(1.0, 0.466, 0.133); // Saffron #FF7722
+                    vec3 color2 = vec3(0.015, 0.047, 0.101); // Deeper Navy #041329
+                    
+                    float noise = sin(p.x * 2.0 + u_time) * cos(p.y * 2.0 + u_time * 0.5);
+                    vec3 finalColor = mix(color2, color1, glow * (0.8 + 0.15 * noise));
+                    
+                    float streaks = abs(sin(uv.y * 10.0 + u_time * 0.3)) * 0.05;
+                    finalColor += color1 * streaks * (1.0 - dist);
+
+                    gl_FragColor = vec4(finalColor, 1.0);
+                }
+            `
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        function animate(time) {
+            uniforms.u_time.value = time * 0.001;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate(0);
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+        });
+    };
+    initShaderBackground();
+
+    // 2. Three.js 3D Scene (ANIMATION_49 as hero element)
+    const initHero3D = () => {
+        const container = document.getElementById('hero-3d-container');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const group = new THREE.Group();
+        scene.add(group);
+
+        const material = new THREE.MeshPhongMaterial({
+            color: 0xFF7722,
+            emissive: 0x442200,
+            shininess: 100,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+
+        const geometry = new THREE.TorusKnotGeometry(1.2, 0.4, 120, 18);
+        const mesh = new THREE.Mesh(geometry, material);
+        group.add(mesh);
+
+        const light = new THREE.PointLight(0xFFD4AF37, 2, 100);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        camera.position.z = 4.5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            group.rotation.y += 0.003;
+            group.rotation.z += 0.001;
+            
+            // Subtle hover float
+            const time = Date.now() * 0.001;
+            group.position.y = Math.sin(time) * 0.1;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+    };
+    initHero3D();
+
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('text-saffron-vibrant', 'border-b-2', 'border-saffron-vibrant');
+            btn.classList.add('text-on-surface-variant');
+        });
+        
+        event.target.classList.add('text-saffron-vibrant', 'border-b-2', 'border-saffron-vibrant');
+        event.target.classList.remove('text-on-surface-variant');
+
+        const formContainer = document.getElementById('darshan-form');
+        if (tab === 'darshan') {
+            formContainer.innerHTML = `
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Temple</label>
+                    <select class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                        <option>Mahakaleshwar Jyotirlinga</option>
+                        <option>Harsiddhi Mata Temple</option>
+                        <option>Kal Bhairav Temple</option>
+                    </select>
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Date</label>
+                    <input type="date" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Pilgrims</label>
+                    <input type="number" placeholder="Number of Pilgrims" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+            `;
+        } else if (tab === 'cabs') {
+            formContainer.innerHTML = `
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Pickup Location</label>
+                    <input type="text" placeholder="Ujjain Station / Airport" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Vehicle Type</label>
+                    <select class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                        <option>Sedan (Premium)</option>
+                        <option>SUV (Family)</option>
+                        <option>Classic TukTuk</option>
+                    </select>
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Time</label>
+                    <input type="time" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+            `;
+        } else if (tab === 'prasad') {
+            formContainer.innerHTML = `
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Item Selection</label>
+                    <select class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                        <option>Bhasma Aarti Prasad</option>
+                        <option>Ladoo Mahaprasad</option>
+                        <option>Special Dry Fruits</option>
+                    </select>
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Quantity</label>
+                    <input type="number" value="1" min="1" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+                <div class="text-left">
+                    <label class="block font-label-sm text-label-sm text-antique-gold mb-2">Delivery Address</label>
+                    <input type="text" placeholder="Enter full address" class="w-full bg-deep-navy border-0 border-b-2 border-antique-gold/50 focus:border-saffron-vibrant focus:ring-0 text-on-background py-3">
+                </div>
+            `;
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('py-2', 'shadow-2xl');
+            header.classList.remove('py-4');
+        } else {
+            header.classList.add('py-4');
+            header.classList.remove('py-2', 'shadow-2xl');
+        }
+    });
+</script>
+</body></html>
